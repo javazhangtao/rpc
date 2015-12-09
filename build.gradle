@@ -24,6 +24,8 @@ dependencies {
     compile 'org.ow2.asm:asm:4.0'
     compile 'cglib:cglib:3.2.0'
     compile 'log4j:log4j:1.2.17'
+    compile 'org.springframework:spring-core:4.2.0.RELEASE'
+    compile 'org.springframework:spring-context:4.2.0.RELEASE'
     testCompile 'junit:junit:4.+'
 }
 

@@ -24,13 +24,31 @@ public class ProxyMethodPool {
             throw new NullPointerException();
         }
         String poolKey=request.getServerName()+"_"+request.getMethondName();
+        GenericObjectPoolConfig poolConfig=new GenericObjectPoolConfig();
         if(!ServerResource.serverPools.containsKey(poolKey)){
-            GenericObjectPoolConfig poolConfig=new GenericObjectPoolConfig();
-            poolConfig.setMinIdle(config.getMinIdle());
-            poolConfig.setMaxIdle(config.getMaxIdle());
-            poolConfig.setMinEvictableIdleTimeMillis(config.getMinEvictableIdleTimeMillis());
+            if(null!=config){
+                poolConfig.setMinIdle(config.getMinIdle());
+                poolConfig.setMaxIdle(config.getMaxIdle());
+                poolConfig.setMinEvictableIdleTimeMillis(config.getMinEvictableIdleTimeMillis());
+            }
             GenericObjectPool<FastMethod> pool=new GenericObjectPool(new ProxyMethodPoolFactory(request),poolConfig);
             ServerResource.serverPools.put(poolKey,pool);
         }
+    }
+
+    public ProxyMethodPoolConfig getConfig() {
+        return config;
+    }
+
+    public void setConfig(ProxyMethodPoolConfig config) {
+        this.config = config;
+    }
+
+    public RpcRequest getRequest() {
+        return request;
+    }
+
+    public void setRequest(RpcRequest request) {
+        this.request = request;
     }
 }

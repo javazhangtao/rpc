@@ -6,11 +6,13 @@ package com.plugins.server.suppor.pool;
  */
 public class ProxyMethodPoolConfig {
 
+    final Integer DEFAULT_MINIDLE=10;
+    final Integer DEFAULT_MAXIDLE=50;
+    final Long DEFAULT_TIMEMILLIS=60*60*1000l;
 
-    private Integer minIdle;
-    private Integer maxIdle;
-    private Long minEvictableIdleTimeMillis;
-
+    private Integer minIdle=DEFAULT_MINIDLE;
+    private Integer maxIdle=DEFAULT_MAXIDLE;
+    private Long minEvictableIdleTimeMillis=DEFAULT_TIMEMILLIS;
 
     public Integer getMaxIdle() {
         return maxIdle;

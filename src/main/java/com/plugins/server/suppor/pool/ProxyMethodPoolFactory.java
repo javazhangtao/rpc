@@ -9,6 +9,7 @@ import org.apache.commons.pool2.impl.DefaultPooledObject;
 
 /**
  * Created by zhangtao on 2015/12/9.
+ * 代理方法池对象管理工厂
  */
 public class ProxyMethodPoolFactory extends BasePooledObjectFactory<FastMethod> {
 
@@ -29,5 +30,13 @@ public class ProxyMethodPoolFactory extends BasePooledObjectFactory<FastMethod> 
     @Override
     public PooledObject<FastMethod> wrap(FastMethod obj) {
         return new DefaultPooledObject<FastMethod>(obj);
+    }
+
+    public RpcRequest getRequest() {
+        return request;
+    }
+
+    public void setRequest(RpcRequest request) {
+        this.request = request;
     }
 }
