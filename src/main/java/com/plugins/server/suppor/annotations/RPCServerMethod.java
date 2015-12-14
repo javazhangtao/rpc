@@ -11,6 +11,6 @@ import java.lang.annotation.*;
 @Documented
 public @interface RPCServerMethod {
 
-    String name();
-    String version();
+    String name();//方法名称
+    String version();//版本号
 }

@@ -1,8 +1,10 @@
 package com.plugins.serialize;
 
-import com.main.service.TestService;
-import com.main.service.impl.TestServiceImpl;
+import com.plugins.server.suppor.resource.ServerResource;
+import net.sf.cglib.reflect.FastMethod;
 import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -15,10 +17,19 @@ public class MainTest {
 
     @Test
     public static void main(String[] args) {
-        TestService ts=new TestServiceImpl();
-        ts.ceshi();
-        System.out.println("aaa");
-        System.out.println("aaa");
+        ApplicationContext context= new ClassPathXmlApplicationContext("/spring/context.xml");
+        try {
+            FastMethod method=ServerResource.serverPools.get("ccccc_1231_1.0").borrowObject();
+            System.out.println(method.invoke("ceshi",null));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println();
+
+//        TestService ts=new TestServiceImpl();
+//        ts.ceshi();
+//        System.out.println("aaa");
+//        System.out.println("aaa");
 //        SerualizeUtil serualizeUtil=SerualizeFactoryBean.create(SerualizeFactoryBean.SerualizeEnum.PROTOC);
 //        for (int i=0;i<10000;i++){
 //            TestBean bean=new TestBean("zhangsan"+i,"count"+i);

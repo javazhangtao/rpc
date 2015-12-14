@@ -1,10 +1,10 @@
-package com.plugins.server.suppor.pool;
+package com.plugins.pools;
 
 /**
  * Created by zhangtao on 2015/12/9.
  * 代理方法池配置
  */
-public class ProxyMethodPoolConfig {
+public class ServerMethodPoolConfig {
 
     final Integer DEFAULT_MINIDLE=10;
     final Integer DEFAULT_MAXIDLE=50;

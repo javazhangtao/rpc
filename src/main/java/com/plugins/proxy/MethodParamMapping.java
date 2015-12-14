@@ -24,8 +24,7 @@ public class MethodParamMapping {
         ClassReader cr = null;
         try{
             cr = new ClassReader(n);
-        } catch (IOException e) {
-        }
+        } catch (IOException e) {}
         cr.accept(new ClassVisitor(Opcodes.ASM4, cw) {
             @Override
             public MethodVisitor visitMethod(final int access, final String name, final String desc,
