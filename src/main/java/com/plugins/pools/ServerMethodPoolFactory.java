@@ -8,6 +8,7 @@ import org.apache.commons.pool2.impl.DefaultPooledObject;
 /**
  * Created by zhangtao on 2015/12/14.
  */
+@Deprecated
 public class ServerMethodPoolFactory extends BasePooledObjectFactory<FastMethod> {
     private FastMethod fastMethod;
 

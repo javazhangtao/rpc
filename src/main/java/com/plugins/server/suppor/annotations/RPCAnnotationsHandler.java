@@ -46,7 +46,7 @@ public class RPCAnnotationsHandler {
     private void _getMethodName(RpcRequest request) throws Exception{
         RPCServerMethod serverMethod=this.method.getAnnotation(RPCServerMethod.class);
         if(null!=serverMethod){
-            request.setMethondName(serverMethod.name());
+            request.setMethondName(this.method.getName());
             request.setServerVersion(serverMethod.version());
         }
         request.setParamTypes(this.method.getParameterTypes());

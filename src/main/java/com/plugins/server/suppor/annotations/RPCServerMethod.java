@@ -10,7 +10,5 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface RPCServerMethod {
-
-    String name();//方法名称
     String version();//版本号
 }

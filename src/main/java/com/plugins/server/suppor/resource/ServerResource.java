@@ -1,12 +1,9 @@
 package com.plugins.server.suppor.resource;
 
-import com.google.common.collect.Maps;
-import com.plugins.pools.ServerMethodPoolConfig;
+import com.plugins.pools.ServerPoolConfig;
 import com.plugins.util.PropertiesUtil;
-import net.sf.cglib.reflect.FastMethod;
-import org.apache.commons.pool2.impl.GenericObjectPool;
-
-import java.util.Map;
+import net.sf.cglib.reflect.FastClass;
+import org.apache.commons.pool2.impl.GenericKeyedObjectPool;
 
 /**
  * Created by zhangtao on 2015/12/8.
@@ -15,8 +12,8 @@ import java.util.Map;
 public class ServerResource {
 
     public static final PropertiesUtil responsecode_prop=new PropertiesUtil("/properties/response_code.properties");
-    public static Map<String,GenericObjectPool<FastMethod>> serverPools= Maps.newConcurrentMap();//服务池集合    key:服务方法名称    value:代理方法池
-    public static ServerMethodPoolConfig methodPoolConfig=new ServerMethodPoolConfig();
+    public static GenericKeyedObjectPool<String,FastClass> serverPool=null;//服务池集合
+    public static ServerPoolConfig methodPoolConfig=new ServerPoolConfig();
 
 
 

@@ -3,16 +3,13 @@ package com.plugins.protocl.transforms;
 import com.plugins.protocl.RpcRequest;
 import com.plugins.proxy.server.ServerMethodFactory;
 import net.sf.cglib.reflect.FastMethod;
-import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.FactoryBean;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
 
 /**
  * Created by zhangtao on 2015/12/14.
  * 动态方法转换工具类
  */
-public class FastMethodTransform implements FactoryBean<FastMethod> ,ApplicationContextAware{
+public class FastMethodTransform{
 
     private ApplicationContext context;//当前上下文环境
     private RpcRequest request;//接口类及方法描述对象
@@ -20,16 +17,11 @@ public class FastMethodTransform implements FactoryBean<FastMethod> ,Application
 
     private FastMethodTransform(){}
 
-    public FastMethodTransform(RpcRequest _request){
+    public FastMethodTransform(ApplicationContext _context,RpcRequest _request){
+        this.context=_context;
         this.request=_request;
     }
 
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        if(null==this.context){
-            this.context=applicationContext;
-        }
-    }
 
     private void transform() throws Exception{
         if(null==this.request){
@@ -43,7 +35,6 @@ public class FastMethodTransform implements FactoryBean<FastMethod> ,Application
         }
     }
 
-    @Override
     public FastMethod getObject() throws Exception {
         if(null==this.fastMethod){
             transform();
@@ -51,13 +42,4 @@ public class FastMethodTransform implements FactoryBean<FastMethod> ,Application
         return this.fastMethod;
     }
 
-    @Override
-    public Class<?> getObjectType() {
-        return FastMethod.class;
-    }
-
-    @Override
-    public boolean isSingleton() {
-        return false;
-    }
 }

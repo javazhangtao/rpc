@@ -1,6 +1,7 @@
 package com.plugins.serialize;
 
 import com.plugins.server.suppor.resource.ServerResource;
+import net.sf.cglib.reflect.FastClass;
 import net.sf.cglib.reflect.FastMethod;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -13,18 +14,26 @@ import java.util.concurrent.Executors;
  * Created by zhangtao on 2015/12/8.
  */
 public class MainTest {
-    static ExecutorService service= Executors.newFixedThreadPool(100);
+    static ExecutorService service= Executors.newFixedThreadPool(50);
 
     @Test
     public static void main(String[] args) {
         ApplicationContext context= new ClassPathXmlApplicationContext("/spring/context.xml");
         try {
-            FastMethod method=ServerResource.serverPools.get("ccccc_1231_1.0").borrowObject();
-            System.out.println(method.invoke("ceshi",null));
+            FastClass fastClass= ServerResource.serverPool.borrowObject("ccccc");
+            FastMethod method=fastClass.getMethod("ceshi",null);
+            method.invoke(context.getBean("ccccc"),null);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println();
+//        for (int i=0;i<=1000000;i++){
+//            service.execute(new TestCeShi(context,""+i));
+//        }
+//        try {
+//
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//        }
 
 //        TestService ts=new TestServiceImpl();
 //        ts.ceshi();
@@ -36,6 +45,35 @@ public class MainTest {
 //            service.execute(new BeanSerialize(bean,serualizeUtil));
 //        }
     }
+
+
+//    static class TestCeShi implements Runnable{
+//
+//        ApplicationContext context;
+//        String str;
+//        public TestCeShi(ApplicationContext context,String str){
+//            this.context=context;
+//            this.str=str;
+//        }
+//        @Override
+//        public void run() {
+//            FastClass serverClass=null;
+//            try {
+//                serverClass = ServerResource.serverPools.get("ccccc").borrowObject();
+//                method.invoke(context.getBean("ccccc"),new Object[]{str});
+////                Thread.sleep(60*1000);
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//            finally {
+//                try {
+//                    ServerResource.serverPools.get("ccccc_ceshi_1.0").returnObject(method);
+//                }catch (IllegalStateException e){
+//
+//                }
+//            }
+//        }
+//    }
 
 //    static class BeanSerialize implements Runnable{
 //        TestBean bean;

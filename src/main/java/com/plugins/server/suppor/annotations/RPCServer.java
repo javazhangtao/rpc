@@ -12,7 +12,7 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Component
-public @interface RPCServer {
+public @interface RPCServer{
 
     String name();//接口类名称
 }

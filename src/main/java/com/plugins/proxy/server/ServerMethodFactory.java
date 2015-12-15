@@ -9,6 +9,7 @@ import org.springframework.beans.factory.FactoryBean;
  * Created by zhangtao on 2015/12/14.
  * 动态方法创建工厂
  */
+@Deprecated
 public class ServerMethodFactory implements FactoryBean<FastMethod>{
     private Object targetClass;//方法所在类对象
     private String methodName;//方法名
