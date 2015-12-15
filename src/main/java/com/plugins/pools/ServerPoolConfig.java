@@ -6,7 +6,7 @@ package com.plugins.pools;
  */
 public class ServerPoolConfig {
 
-    final Integer DEFAULT_MAXTOTAL=500;
+    final Integer DEFAULT_MAXTOTAL=1000;
     final Long DEFAULT_TIMEMILLIS=60*60*1000l;
 
     private Integer maxTotal=DEFAULT_MAXTOTAL;

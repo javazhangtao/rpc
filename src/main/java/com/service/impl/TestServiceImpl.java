@@ -17,7 +17,7 @@ public class TestServiceImpl implements TestService {
 
     @Override
     @RPCServerMethod(version = "1.0")
-    public void ceshi(String str) {
-        System.out.println(str);
+    public String ceshi(String str) {
+        return str;
     }
 }

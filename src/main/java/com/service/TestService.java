@@ -6,5 +6,5 @@ package com.service;
 public interface TestService {
     public void ceshi();
 
-    public void ceshi(String str);
+    public String ceshi(String str);
 }

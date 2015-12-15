@@ -14,6 +14,7 @@ import java.util.Map;
 
 /**
  * Created by zhangtao on 2015/12/15.
+ * 初始化对外服务信息
  */
 @Component
 public class ServerHandler  implements InitializingBean, ApplicationContextAware {
