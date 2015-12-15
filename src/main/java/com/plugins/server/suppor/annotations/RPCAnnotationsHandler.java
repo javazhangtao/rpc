@@ -8,6 +8,7 @@ import java.lang.reflect.Method;
  * Created by zhangtao on 2015/12/9.
  * 注解处理器
  */
+@Deprecated
 public class RPCAnnotationsHandler {
 
     private Object targetObject;
