@@ -3,6 +3,7 @@ package com.plugins.server.suppor;
 /**
  * Created by zhangtao on 2015/12/8.
  */
+@Deprecated
 public class ServerConfig {
 
     final Integer DEFAULT_INITCOUNT=10;//每个server服务方法对象池初始化数量
