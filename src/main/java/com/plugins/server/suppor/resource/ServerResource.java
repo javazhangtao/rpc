@@ -13,7 +13,7 @@ public class ServerResource {
 
     public static final PropertiesUtil responsecode_prop=new PropertiesUtil("/properties/response_code.properties");
     public static GenericKeyedObjectPool<String,FastClass> serverPool=null;//服务池集合
-    public static ServerPoolConfig methodPoolConfig=new ServerPoolConfig();
+    public static ServerPoolConfig poolConfig=new ServerPoolConfig();//代理类池配置
 
 
 

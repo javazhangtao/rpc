@@ -28,7 +28,7 @@ public class ServerHandler  implements InitializingBean, ApplicationContextAware
     public void afterPropertiesSet() throws Exception {
         Map<String,Object> servers=context.getBeansWithAnnotation(RPCServer.class);
         if(null==ServerResource.serverPool){
-            new ServerPoolHandler(this.context,new ServerPoolConfig()).create();
+            new ServerPoolHandler(this.context,ServerResource.poolConfig).create();
         }
         for (Map.Entry<String , Object> entry:servers.entrySet()){
                 ServerResource.serverPool.addObject(entry.getKey());

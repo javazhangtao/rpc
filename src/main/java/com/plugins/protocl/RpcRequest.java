@@ -6,14 +6,14 @@ package com.plugins.protocl;
  */
 public class RpcRequest {
 
-    String requestId;
-    String host;
-    Integer port;
-    String serverName;
-    String methondName;
-    String serverVersion;
-    Class<?>[] paramTypes;
-    Object[] params;
+    String requestId;//请求Id
+    String host;//请求服务地址
+    Integer port;//请求服务端口
+    String serverName;//请求服务名称
+    String methondName;//请求服务方法名
+    String serverVersion;//请求服务版本号
+    Class<?>[] paramTypes;//请求方法参数类型
+    Object[] params;//请求方法参数
 
     public String getRequestId() {
         return requestId;

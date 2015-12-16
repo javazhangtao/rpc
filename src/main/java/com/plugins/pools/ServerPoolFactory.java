@@ -10,10 +10,11 @@ import org.springframework.context.ApplicationContext;
 
 /**
  * Created by zhangtao on 2015/12/15.
+ * 池元素工厂
  */
 public class ServerPoolFactory extends BaseKeyedPooledObjectFactory<String , FastClass>{
 
-    private ApplicationContext context;
+    private ApplicationContext context;//当前上下文环境
 
     private ServerPoolFactory(){}
 

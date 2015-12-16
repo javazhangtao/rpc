@@ -5,11 +5,11 @@ package com.plugins.protocl;
  * 响应对象
  */
 public class RpcResponse {
-    String requestId;
-    String message;
-    String code;
-    Object data;
-    Throwable error;
+    String requestId;//请求id
+    String message;//响应描述
+    String code;//状态码
+    Object data;//返回数据
+    Throwable error;//错误信息
 
     public String getRequestId() {
         return requestId;

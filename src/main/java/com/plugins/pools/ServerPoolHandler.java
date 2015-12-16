@@ -7,10 +7,11 @@ import org.springframework.context.ApplicationContext;
 
 /**
  * Created by zhangtao on 2015/12/15.
+ * 创建服务对象池
  */
 public class ServerPoolHandler{
     private ServerPoolConfig poolConfig;//池对象配置信息
-    private ApplicationContext context;
+    private ApplicationContext context;//当前上下文对象
 
     private ServerPoolHandler(){}
 
@@ -19,6 +20,10 @@ public class ServerPoolHandler{
         this.poolConfig=_poolConfig;
     }
 
+    /**
+     * 创建池对象
+     * @throws Exception
+     */
     public void create() throws Exception{
         try {
             if(null==ServerResource.serverPool) {
@@ -26,6 +31,7 @@ public class ServerPoolHandler{
                 if (this.poolConfig != null) {
                     GenericKeyedObjectPoolConfig config = new GenericKeyedObjectPoolConfig();
                     config.setMaxTotal(this.poolConfig.getMaxTotal());
+                    config.setMinIdlePerKey(this.poolConfig.getMaxTotal());
                     config.setMinEvictableIdleTimeMillis(this.poolConfig.getMinEvictableIdleTimeMillis());
                     ServerResource.serverPool.setConfig(config);
                 }
