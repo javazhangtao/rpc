@@ -1,7 +1,6 @@
 package com.service.impl;
 
 import com.plugins.server.suppor.annotations.RPCServer;
-import com.plugins.server.suppor.annotations.RPCServerMethod;
 import com.service.TestService;
 
 /**
